@@ -28,6 +28,7 @@ var d = false;
 
 checkEquality(c,d)
 strictCheckEquality(c,d)
+strictCheckEquality(1,'1')
 
 var e=0;
 // code goes out to internet and looks for a value.
@@ -36,3 +37,17 @@ var e=0;
 if(e){
     console.log('a exists')
 }
+
+function greet(name = 'Guest'){
+    console.log(name)
+    console.log('Hello ' + name)
+}
+greet()
+
+function oldGreet(name ){
+    name = name || 'There'
+    console.log(name)
+    console.log('Hello ' + name)
+}
+oldGreet('Tony')
+console.log(library)

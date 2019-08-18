@@ -4,7 +4,7 @@ Javascript is dynamically typed
 ## Primitive Types
 **A primative type is a type of data that represents a single value. It is not an object**
 * 6 primitive types in JS
-  1. Undefined - represents a lack of existence 
+  1. **Undefined** - represents a lack of existence 
   2. **NULL** represents lack of existence.
   3. **Boolean** true or false
   4. **Number** A floating point number. There is only one number type in JS.
@@ -91,3 +91,35 @@ if(e){
     console.log('a exists')
 }
 ```
+
+## Default Values
+```javascript
+function greet(name = 'Guest'){
+    console.log(name)
+    console.log('Hello ' + name)
+}
+greet()
+
+function oldGreet(name ){
+    name = name || 'There'
+    console.log(name)
+    console.log('Hello ' + name)
+}
+oldGreet()
+```
+
+oldGreet is a trick used before es6. The or operator (||) evaluates both sides and uses coercion to determine which value is true. In the case where name is empty, it coerces to false and the Or operator returns 'There'. If name has a value, then the Or operator returns the first result.
+
+## Frameworks and default values
+When scripts are loaded into html, they are concatenated. The following scripts are loaded one after another. 
+```html
+<script src="lib1.js"></script>
+<script src="lib2.js"></script>
+<script src="app.js"></script>
+```
+Both lib*.js files have a library variable `library = "Lib1"`.
+To prevent problems, some frameworks will write their variables like this:
+
+`var library = window.library || "Lib2"`
+
+In this case if the variable already exists in the document we won't change it, otherwise set it to "Lib2"

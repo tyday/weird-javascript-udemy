@@ -1,0 +1,1 @@
+var library = window.library || "lib2"
