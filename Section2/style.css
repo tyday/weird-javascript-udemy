@@ -1,0 +1,31 @@
+*{
+    font-family: sans-serif;
+}
+#wrapperOne {
+/*    background-color: burlywood;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#wrapperOne:nth-child(odd){
+    background-color:cornflowerblue;
+}
+#wrapperOne:nth-child(even){
+    background-color:coral;
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+    background-color: gainsboro;
+    margin: 20px;
+    text-align: center;
+}
+
+#wrapperTwo {
+    display: flex;
+}
+
+.lower-box {
+    width:540
+}
