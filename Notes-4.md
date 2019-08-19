@@ -154,3 +154,26 @@ log(function(){
 })
 ```
 
+## By Value vs By Reference
+* Primitive values are passed by value:
+![Primitive by Value](Section4/Primitive_by_value.png)
+* Objects are passed by reference
+![Primitive by Reverence](Section4/Primitive_by_reference.png)
+* **All primitives are passed by value**
+* **All objects are passed by reference**
+
+## Objects, Functions and 'this'
+
+```javascript
+console.log(this) // points to global object
+
+function a(){
+    console.log(this)
+}
+
+var b = () => {
+    console.log(this)
+}
+a(); // points to global object
+b(); // also points to global object
+```
