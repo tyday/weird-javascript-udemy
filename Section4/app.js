@@ -62,6 +62,7 @@ log(function(){
     console.log("Save me Obi Won")
 }) */
 
+/* 
 console.log(this) // points to global object
 
 function a(){
@@ -73,6 +74,7 @@ var b = () => {
 }
 a(); // points to global object
 b(); // also points to global object
+ */
 
 //var c = {
 //    name:"The c object",
@@ -83,6 +85,7 @@ b(); // also points to global object
 //
 //c.log()
 
+/* 
 var c = {
     name:"The c object",
     log: function(){
@@ -99,3 +102,34 @@ var c = {
          
 }
 c.log()
+ */
+
+/* 
+//Arguments and ...spread
+
+ function greet(firstname, lastname, language="Catlish"){
+     language = language || "doglish"
+     console.log(firstname)
+     console.log(lastname)
+     console.log(language)
+     console.log(arguments)
+ }
+
+ greet("jake","Ralston")
+
+function greet(first,last,...other){
+    console.log(`First ${first}, Last: ${last} Others: ${other}`)
+}
+greet("j",'R',1,2,3,'hello')
+ */
+
+ 
+ // Automatic semicolon insertion
+
+ function jake(){
+     return
+     {
+         position:"on back"
+     }
+ }
+ console.log(jake())

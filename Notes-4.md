@@ -218,3 +218,17 @@ var c = {
 ```
 
 ## Arrays, collections of anything
+
+
+## Arguments and ...spread
+* Javascript gives a keyword: argument
+* The argument object looks like an array but is not an array
+
+## Function Overloading
+* Does not exist in Javascript because functions are objects
+
+## Syntax Parsers
+
+## Automatic Semicolon insertion
+* Javascript automatically inserts semicolons where it thinks they belong
+* This can cause problems
