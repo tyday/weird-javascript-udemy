@@ -5,7 +5,9 @@ Javascript is dynamically typed
 **A primative type is a type of data that represents a single value. It is not an object**
 * 6 primitive types in JS
   1. **Undefined** - represents a lack of existence 
+    * Set by the browser
   2. **NULL** represents lack of existence.
+    * Similar to undefined but set by the programmer
   3. **Boolean** true or false
   4. **Number** A floating point number. There is only one number type in JS.
   5. **String** A sequence of characters

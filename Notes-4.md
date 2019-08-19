@@ -124,7 +124,9 @@ var anonymousGreet = function(){
 
 anonymousGreet() // Calls the function
 ```
+
 * Because functions are first class citizens, they can be passed around:
+
 ```javascript
 function log(a) {
     console.log(a)
@@ -136,7 +138,8 @@ log(function(){
     console.log("Save me Obi Won")
 })
 ```
-```
+
+```javascript
 >1
 >hope
 >ƒ (){
@@ -144,6 +147,7 @@ log(function(){
 }
 ```
 And functions can be handed to functions to run:
+
 ```javascript
 function log(a) {
     a()
@@ -154,3 +158,63 @@ log(function(){
 })
 ```
 
+## By Value vs By Reference
+* Primitive values are passed by value:
+![Primitive by Value](Section4/Primitive_by_value.png)
+* Objects are passed by reference
+![Primitive by Reverence](Section4/Primitive_by_reference.png)
+* **All primitives are passed by value**
+* **All objects are passed by reference**
+
+## Objects, Functions and 'this'
+
+```javascript
+console.log(this) // points to global object
+
+function a(){
+    console.log(this)
+}
+
+var b = () => {
+    console.log(this)
+}
+a(); // points to global object
+b(); // also points to global object
+```
+
+However, when a function is part of an object (a method), this returns the object the method belongs to:
+```javascript
+var c = {
+    name:"The c object",
+    log: function(){
+    console.log(this)
+    }
+}
+
+c.log()
+
+> {name: "The c object", log: ƒ}
+```
+
+**The 'this' inside a function in a method references the global this** *shrug*
+
+A common tactic is to `var self = this;` and then use self:
+```javascript
+var c = {
+    name:"The c object",
+    log: function(){
+    var self = this
+    self.name = 'Updated c object'
+    console.log(self)
+    
+    var setname = function(newname){
+        self.name = newname
+    }
+    setname('Updated again! The c object')
+    console.log(self)
+    }
+         
+}
+```
+
+## Arrays, collections of anything

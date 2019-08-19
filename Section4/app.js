@@ -49,7 +49,7 @@ function greet() {
 }
 greet.language = 'english' */
 
-
+/*
 // Function Statements and Function Expressions
 
 function log(a) {
@@ -60,4 +60,42 @@ log(1)
 log('hope')
 log(function(){
     console.log("Save me Obi Won")
-})
+}) */
+
+console.log(this) // points to global object
+
+function a(){
+    console.log(this)
+}
+
+var b = () => {
+    console.log(this)
+}
+a(); // points to global object
+b(); // also points to global object
+
+//var c = {
+//    name:"The c object",
+//    log: function(){
+//    console.log(this)
+//    }
+//}
+//
+//c.log()
+
+var c = {
+    name:"The c object",
+    log: function(){
+    var self = this
+    self.name = 'Updated c object'
+    console.log(self)
+    
+    var setname = function(newname){
+        self.name = newname
+    }
+    setname('Updated again! The c object')
+    console.log(self)
+    }
+         
+}
+c.log()
