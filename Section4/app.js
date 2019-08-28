@@ -124,12 +124,194 @@ greet("j",'R',1,2,3,'hello')
  */
 
  
- // Automatic semicolon insertion
+//  // Automatic semicolon insertion
 
- function jake(){
-     return
-     {
-         position:"on back"
-     }
- }
- console.log(jake())
+//  function jake(){
+//      return
+//      {
+//          position:"on back"
+//      }
+//  }
+//  console.log(jake())
+
+
+/* 
+//function statement
+function greet(name){
+    console.log('Hello ' + name)
+}
+greet();
+
+// using a function expression
+var greetFunc = function(name) {
+    console.log('Hello ' + name)
+}
+greetFunc()
+ // using an IIFE
+var greeting = function(name) {
+    console.log('Hello ' + name)
+}();
+var greetz = "hola ";
+function test(name){
+    var greetz = "hello"
+    console.log(greetz + name)
+}
+test();
+(function(name){
+    var greeting = 'Helloooo '
+    console.log(greeting + name);
+    // return greeting + name;
+}());
+console.log(greetz)
+ */
+
+
+ //Closure
+//  function greet(whattosay){
+//      return function(name){
+//          console.log(whattosay + ' ' + name);
+//      };
+//  }
+
+//  var sayHi = greet('Hi')
+//  console.log(sayHi)
+/* 
+function buildFunctions(){
+    var arr = [];
+    for (var i = 0; i<3;i++){
+        let j = i; // sets up j as a new variable in memory
+        arr.push(
+            function() {
+                console.log(i) // Represents i at the time the function was run
+                console.log(j)
+            }
+        )
+    }
+    return arr;
+}
+// This example works pre ES6
+function buildFunctionsES5(){
+    var arr = [];
+    for (var i = 0; i<3;i++){
+        // We push an instantly called function to the array.
+        // That way, the j refers to the i in scope specific
+        // to the execution context of the new function
+        arr.push(
+            (function (j){
+                return function(){
+                    console.log(j)
+                }
+            })(i)
+        )
+    }
+    return arr;
+}
+var fs = buildFunctionsES5();
+fs[0]()
+fs[1]()
+fs[2]() 
+*/
+
+/* function sayHiLater(){
+    var greeting = 'Hello'
+    setTimeout(
+        function(){
+            console.log(greeting);
+        },
+        3000
+    )
+    console.log('other hello')
+}
+sayHiLater(); */
+
+/* function tellMeWhenDone(callback){
+    var a = 1000; // some work
+    var b = 2000; // somw work
+
+    callback()
+}
+
+tellMeWhenDone(function(){
+    console.log("I'm done")
+}) */
+/* 
+var person = {
+    firstname: 'John',
+    lastname: 'Doe',
+    getFullName: function(){
+        var fullname = `${this.firstname} ${this.lastname}`;
+        return fullname 
+    }
+}
+var logName = function(lang1, lang2){
+    console.log(`Logged: ${this.getFullName()}`)
+    console.log(`Arguments: ${lang1}, ${lang2}`)
+    console.log('----------------')
+}
+var logPersonName = logName.bind(person);
+logPersonName('en','es')
+logName.call(person, 'russian','swedish')
+logName.apply(person, ['deutsch', 'francais'])
+
+var person2 = {
+    firstname: "Jane",
+    lastname: "Smith"
+}
+console.log(person.getFullName.apply(person2));
+
+ */
+
+/* 
+// function currying
+function multiply(a,b){
+    return a*b;
+}
+
+var multiplyByTwo = multiply.bind(this, 2)
+console.log(multiplyByTwo(4))
+ */
+
+//  function baz() {
+//      // call-stack is: `baz`
+//      // so our call-site is in the global scope
+//      console.log("baz");
+//      bar(); // <-- call-site for `bar`
+//  }
+//  function bar() {
+//     // call-stack is: `baz` -> `bar`
+//     // so, our call-site is in `baz`
+
+//     console.log( "bar" );
+//     foo(); // <-- call-site for `foo`
+//  }
+//  function foo() {
+//     // call-stack is: `baz` -> `bar` -> `foo`
+//     // so our call-site is in `bar`
+
+//     console.log('foo')
+//  }
+
+//  baz(); // <--- call-site for `baz`
+
+ function foo() {
+	console.log( this.a );
+}
+
+function doFoo(fn) {
+	// `fn` is just another reference to `foo`
+
+	fn(); // <-- call-site!
+}
+
+var obj = {
+	a: 2,
+	foo: foo
+};
+
+var a = "oops, global"; // `a` also property on global object
+
+// doFoo( obj.foo ); // "oops, global"
+doFoo(obj.foo)
+// obj.foo()
+aa = obj.foo.bind(obj)
+doFoo(aa)

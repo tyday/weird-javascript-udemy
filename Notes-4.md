@@ -232,3 +232,87 @@ var c = {
 ## Automatic Semicolon insertion
 * Javascript automatically inserts semicolons where it thinks they belong
 * This can cause problems
+
+## Whitespace: 
+Invisible characters that create literal 'space' in your written code
+* Javascript is very friendly to white-space
+* Use it
+
+## Immediately Invoked Function Expressions (IIFE)s
+```javascript
+//function statement
+function greet(name){
+    console.log('Hello ' + name)
+}
+greet();
+
+// using a function expression
+var greetFunc = function(name) {
+    console.log('Hello ' + name)
+}
+greetFunc();
+
+ // using an IIFE
+var greeting = function(name) {
+    console.log('Hello ' + name)
+}();  // <-----
+
+(function(name){
+    var greeting = 'Helloooo '
+    console.log(greeting + name);
+    // return greeting + name;
+}())
+```
+
+## Understanding Closures
+* Closures are confusing
+* Functions have access to variables in their exection context
+```javascript
+// The innner function has access to i.
+function outer(){
+    var i = 0;
+    return function(){
+        console.log('The outer i value is: ' +i)
+    }
+}
+var j = outer()
+
+j() == 'The outer i value is: 0'
+// Even though outer has run and no longer exists,
+// The inner function still refers to the i variable
+```
+* Closures can be used to make variables private
+* Function factories
+
+## Closures and Callbacks
+* Callback Function
+* A function you give to another function, to be run when the other function is finished
+
+## Call(), Apply(), Bind()
+* Applicable to 'this'
+* Available to all functions
+* Call acts like (). You can give it an object to act as this
+* Apply is similar to call but arguments are passed in as a list
+```javascript
+var person = {
+    firstname: 'John',
+    lastname: 'Doe',
+    getFullName: function(){
+        var fullname = `${this.firstname} ${this.lastname}`;
+        return fullname 
+    }
+}
+var logName = function(lang1, lang2){
+    console.log(`Logged: ${this.getFullName()}`)
+    console.log(`Arguments: ${lang1}, ${lang2}`)
+    console.log('----------------')
+}
+var logPersonName = logName.bind(person);
+logPersonName('en','es')
+logName.call(person, 'russian','swedish')
+logName.apply(person, ['deutsch', 'francais'])
+
+```
+* ### Function Borrowing
+* ### Function Currying
+
