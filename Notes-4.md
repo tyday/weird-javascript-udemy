@@ -313,6 +313,9 @@ logName.call(person, 'russian','swedish')
 logName.apply(person, ['deutsch', 'francais'])
 
 ```
+## Functional Programming
 * ### Function Borrowing
 * ### Function Currying
+WTF. Don't fucking know. I believe that ecma 6 added so much functionality to js that half the shit in the functional programming section has been implemented.
+Interesting. I need to come back here when i have a better grasp
 

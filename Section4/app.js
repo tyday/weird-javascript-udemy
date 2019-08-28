@@ -308,10 +308,70 @@ var obj = {
 	foo: foo
 };
 
-var a = "oops, global"; // `a` also property on global object
+// var a = "oops, global"; // `a` also property on global object
 
-// doFoo( obj.foo ); // "oops, global"
-doFoo(obj.foo)
-// obj.foo()
-aa = obj.foo.bind(obj)
-doFoo(aa)
+// // doFoo( obj.foo ); // "oops, global"
+// doFoo(obj.foo)
+// // obj.foo()
+// aa = obj.foo.bind(obj)
+// doFoo(aa)
+
+// Functional Programming
+
+function mapForEach(arr, fn){
+    var newArr = []
+    for (var i=0;i<arr.length;i++){
+        newArr.push(
+            fn(arr[i])
+        )
+        
+    }
+    return newArr
+}
+var arr1 = [1,2,3]
+console.log(arr1)
+arr2 = []
+for (var i=0;i<arr1.length;i++){
+    arr2.push(arr1[i]*2)
+}
+console.log(arr2)
+console.log(arr2.map((a)=>a+1))
+console.log(arr2)
+console.log(mapForEach(arr1, function(a){return a*3}))
+
+
+arr2 = mapForEach(arr1,function(item){return item * 9})
+console.log(arr2)
+
+checkPastLimiter= function (limiter,item) {
+    return item > limiter
+}
+aa = checkPastLimiter(1)
+
+arr3 = mapForEach(arr1,checkPastLimiter.bind(this,3))
+console.log(arr3)
+
+bindPastLimiter = function(limiter){
+    return checkPastLimiter.bind(this,limiter)
+}
+arr4 = mapForEach(arr1, bindPastLimiter(0))
+console.log(arr4)
+
+var checkPastLimiterSimplified = function(limiter){
+    return function(limiter,item){
+        return item > limiter;
+    }.bind(this,limiter)
+}
+const multiplyByAmount = function(amount){
+    return function(amount, data){
+        return amount * data
+    }.bind(this,amount)
+}
+arr5 = mapForEach(arr1, checkPastLimiterSimplified(1))
+console.log(arr5)
+arr6 = mapForEach(arr1,multiplyByAmount(6))
+console.log(arr6)
+
+
+var arr7 = _.filter([1,2,3,4,5,6,7,8,9,10,11],function(item){return item%3===1})
+console.log(arr7)
